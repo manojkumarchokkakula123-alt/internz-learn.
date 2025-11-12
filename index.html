@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>InternZ Learn - Tech Skill Assessment</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; background-color: #f4f4f9; }
+        .container { max-width: 900px; margin: auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1, h2 { color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px; }
+        .hero { text-align: center; padding: 40px 0; background-color: #007bff; color: white; border-radius: 8px 8px 0 0; }
+        .hero h1 { border-bottom: none; }
+        .content, #quiz-form { margin-top: 20px; }
+        .btn-quiz { background-color: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1em; transition: background-color 0.3s; display: block; width: 250px; margin: 20px auto; text-align: center; }
+        .btn-quiz:hover { background-color: #218838; }
+        #quiz-section { display: none; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .quiz-question { margin-bottom: 20px; padding: 15px; border: 1px solid #eee; border-radius: 5px; background-color: #fafafa; }
+        .quiz-question p { font-weight: bold; margin-bottom: 10px; color: #007bff; }
+        .quiz-question label { display: block; margin-bottom: 5px; cursor: pointer; padding: 5px; border-radius: 3px; }
+        .quiz-question label:hover { background-color: #e9ecef; }
+        .quiz-question input[type="radio"] { margin-right: 10px; }
+        #result-message { display: none; text-align: center; padding: 20px; border: 2px solid #007bff; background-color: #e9f7ff; border-radius: 8px; font-size: 1.05em; font-weight: bold; margin-top: 30px;}
+        #download-csv { display: none; margin-top: 12px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header class="hero">
+        <h1>Welcome to InternZ Learn</h1>
+        <p>Your pathway to in-demand tech skills in AI, Data Science, Web Development, and more.</p>
+    </header>
+
+    <div class="content">
+        <h2>Our Mission</h2>
+        <p>We provide high-quality, project-based learning experiences to help students build successful careers in the technology sector. Our courses cover 17 in-demand domains.</p>
+        
+        <p><strong>Ready to test your knowledge and see where you stand?</strong></p>
+
+        <button class="btn-quiz" id="start-quiz-btn" aria-controls="quiz-section" aria-expanded="false">
+            Start Your Tech Skill Quiz
+        </button>
+    </div>
+    
+    <hr>
+
+    <div id="quiz-section" aria-live="polite">
+        <h2>🚀 Student Assessment & Registration</h2>
+        <p>Please enter your details and complete the 25-question quiz to receive your results and course recommendations!</p>
+
+        <form id="quiz-form">
+            <h3>Your Details</h3>
+            <div class="form-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required />
+            </div>
+            <div class="form-group">
+                <label for="education">Highest Education Qualification:</label>
+                <input type="text" id="education" name="education" required />
+            </div>
+            <div class="form-group">
+                <label for="department">Current Department/Field of Study:</label>
+                <input type="text" id="department" name="department" required />
+            </div>
+
+            <h3>Skill Assessment Quiz</h3>
+
+            <!-- For brevity in the file block below, the 25 questions are identical to your original quiz -->
+            <div class="quiz-question"><p>Q1. Which term refers to the process of converting raw data into a clean, usable format for analysis?</p><label><input type="radio" name="q1" value="A" required> A) Feature Engineering</label><label><input type="radio" name="q1" value="B"> B) Model Training</label><label><input type="radio" name="q1" value="C"> C) Data Cleansing</label><label><input type="radio" name="q1" value="D"> D) Data Visualization</label></div>
+            <div class="quiz-question"><p>Q2. Which type of machine learning algorithm relies on labeled training data?</p><label><input type="radio" name="q2" value="A" required> A) Unsupervised Learning</label><label><input type="radio" name="q2" value="B"> B) Reinforcement Learning</label><label><input type="radio" name="q2" value="C"> C) Supervised Learning</label><label><input type="radio" name="q2" value="D"> D) Deep Learning</label></div>
+            <div class="quiz-question"><p>Q3. What is the main purpose of a Confusion Matrix in classification problems?</p><label><input type="radio" name="q3" value="A" required> A) Calculate mean</label><label><input type="radio" name="q3" value="B"> B) Visualize distributions</label><label><input type="radio" name="q3" value="C"> C) Evaluate model performance</label><label><input type="radio" name="q3" value="D"> D) Filter outliers</label></div>
+            <div class="quiz-question"><p>Q4. In statistical analysis, what is a measure of how far apart numbers are in a data set?</p><label><input type="radio" name="q4" value="A" required> A) Mean</label><label><input type="radio" name="q4" value="B"> B) Median</label><label><input type="radio" name="q4" value="C"> C) Variance</label><label><input type="radio" name="q4" value="D"> D) Mode</label></div>
+            <div class="quiz-question"><p>Q5. Which Python library is most suitable for numerical computation, especially with arrays and matrices?</p><label><input type="radio" name="q5" value="A" required> A) Pandas</label><label><input type="radio" name="q5" value="B"> B) Matplotlib</label><label><input type="radio" name="q5" value="C"> C) NumPy</label><label><input type="radio" name="q5" value="D"> D) Scikit-learn</label></div>
+
+            <div class="quiz-question"><p>Q6. A Neural Network with more than three layers (input, output, and one hidden layer) is generally referred to as what?</p><label><input type="radio" name="q6" value="A" required> A) Shallow Net</label><label><input type="radio" name="q6" value="B"> B) Multi-layer Perceptron</label><label><input type="radio" name="q6" value="C"> C) Deep Learning</label><label><input type="radio" name="q6" value="D"> D) Recurrent Network</label></div>
+            <div class="quiz-question"><p>Q7. Which field of AI focuses on enabling machines to read, understand, and generate human language?</p><label><input type="radio" name="q7" value="A" required> A) Computer Vision</label><label><input type="radio" name="q7" value="B"> B) Robotics</label><label><input type="radio" name="q7" value="C"> C) Natural Language Processing (NLP)</label><label><input type="radio" name="q7" value="D"> D) Predictive Modeling</label></div>
+            <div class="quiz-question"><p>Q8. The Turing Test is designed to assess a machine's ability to exhibit which quality?</p><label><input type="radio" name="q8" value="A" required> A) Speed</label><label><input type="radio" name="q8" value="B"> B) Accuracy</label><label><input type="radio" name="q8" value="C"> C) Intelligence</label><label><input type="radio" name="q8" value="D"> D) Memory</label></div>
+            <div class="quiz-question"><p>Q9. Which of the following is a common activation function used in the hidden layers of a neural network?</p><label><input type="radio" name="q9" value="A" required> A) Sigmoid</label><label><input type="radio" name="q9" value="B"> B) Mean Squared Error</label><label><input type="radio" name="q9" value="C"> C) R-squared</label><label><input type="radio" name="q9" value="D"> D) Linear Regression</label></div>
+            <div class="quiz-question"><p>Q10. An AI system that only responds to a fixed set of commands and has no memory of past interactions is an example of what?</p><label><input type="radio" name="q10" value="A" required> A) General AI</label><label><input type="radio" name="q10" value="B"> B) Narrow AI</label><label><input type="radio" name="q10" value="C"> C) Supervised AI</label><label><input type="radio" name="q10" value="D"> D) Deep AI</label></div>
+
+            <div class="quiz-question"><p>Q11. What technology is used to define the structure and content of a web page?</p><label><input type="radio" name="q11" value="A" required> A) CSS</label><label><input type="radio" name="q11" value="B"> B) JavaScript</label><label><input type="radio" name="q11" value="C"> C) PHP</label><label><input type="radio" name="q11" value="D"> D) HTML</label></div>
+            <div class="quiz-question"><p>Q12. Which programming language adds interactivity and dynamic behavior to a website?</p><label><input type="radio" name="q12" value="A" required> A) Python</label><label><input type="radio" name="q12" value="B"> B) Ruby</label><label><input type="radio" name="q12" value="C"> C) Java</label><label><input type="radio" name="q12" value="D"> D) JavaScript</label></div>
+            <div class="quiz-question"><p>Q13. What does 'responsive design' primarily aim to achieve?</p><label><input type="radio" name="q13" value="A" required> A) Faster loading speeds</label><label><input type="radio" name="q13" value="B"> B) Better search ranking</label><label><input type="radio" name="q13" value="C"> C) Optimal viewing across devices</label><label><input type="radio" name="q13" value="D"> D) Enhanced security</label></div>
+            <div class="quiz-question"><p>Q14. Which HTTP method is typically used to request data from a specified resource?</p><label><input type="radio" name="q14" value="A" required> A) POST</label><label><input type="radio" name="q14" value="B"> B) PUT</label><label><input type="radio" name="q14" value="C"> C) GET</label><label><input type="radio" name="q14" value="D"> D) DELETE</label></div>
+            <div class="quiz-question"><p>Q15. Which of the following is a popular JavaScript framework used for building user interfaces?</p><label><input type="radio" name="q15" value="A" required> A) Django</label><label><input type="radio" name="q15" value="B"> B) Flask</label><label><input type="radio" name="q15" value="C"> C) React</label><label><input type="radio" name="q15" value="D"> D) Laravel</label></div>
+
+            <div class="quiz-question"><p>Q16. What is a common technique where an attacker sends a high volume of traffic to crash a target server?</p><label><input type="radio" name="q16" value="A" required> A) Phishing</label><label><input type="radio" name="q16" value="B"> B) Malware</label><label><input type="radio" name="q16" value="C"> C) Man-in-the-Middle</label><label><input type="radio" name="q16" value="D"> D) Denial of Service (DoS)</label></div>
+            <div class="quiz-question"><p>Q17. Which security principle requires users to be granted only the minimum access rights necessary to perform their job?</p><label><input type="radio" name="q17" value="A" required> A) Multi-Factor Authentication</label><label><input type="radio" name="q17" value="B"> B) Principle of Least Privilege</label><label><input type="radio" name="q17" value="C"> C) Zero Trust</label><label><input type="radio" name="q17" value="D"> D) Data Encryption</label></div>
+            <div class="quiz-question"><p>Q18. What is the process of converting plaintext into an unreadable format to prevent unauthorized access?</p><label><input type="radio" name="q18" value="A" required> A) Hashing</label><label><input type="radio" name="q18" value="B"> B) Steganography</label><label><input type="radio" name="q18" value="C"> C) Encryption</label><label><input type="radio" name="q18" value="D"> D) Tokenization</label></div>
+            <div class="quiz-question"><p>Q19. What is a 'Zero-Day' vulnerability?</p><label><input type="radio" name="q19" value="A" required> A) A known bug with a patch available</label><label><input type="radio" name="q19" value="B"> B) A vulnerability that is actively being exploited for 24 hours</label><label><input type="radio" name="q19" value="C"> C) A vulnerability unknown to the software vendor</label><label><input type="radio" name="q19" value="D"> D) A patch applied immediately upon release</label></div>
+            <div class="quiz-question"><p>Q20. Which of the following is a common method for validating a user's identity beyond a password?</p><label><input type="radio" name="q20" value="A" required> A) VPN</label><label><input type="radio" name="q20" value="B"> B) Firewall</label><label><input type="radio" name="q20" value="C"> C) Two-Factor Authentication</label><label><input type="radio" name="q20" value="D"> D) Intrusion Detection System</label></div>
+
+            <div class="quiz-question"><p>Q21. What is the primary use of the pip command in Python?</p><label><input type="radio" name="q21" value="A" required> A) Running scripts</label><label><input type="radio" name="q21" value="B"> B) Installing packages</label><label><input type="radio" name="q21" value="C"> C) Debugging code</label><label><input type="radio" name="q21" value="D"> D) Creating virtual environments</label></div>
+            <div class="quiz-question"><p>Q22. Which of these data types is ordered, immutable, and allows duplicate members?</p><label><input type="radio" name="q22" value="A" required> A) List</label><label><input type="radio" name="q22" value="B"> B) Set</label><label><input type="radio" name="q22" value="C"> C) Dictionary</label><label><input type="radio" name="q22" value="D"> D) Tuple</label></div>
+            <div class="quiz-question"><p>Q23. In Python, what keyword is used to start defining a function?</p><label><input type="radio" name="q23" value="A" required> A) func</label><label><input type="radio" name="q23" value="B"> B) define</label><label><input type="radio" name="q23" value="C"> C) function</label><label><input type="radio" name="q23" value="D"> D) def</label></div>
+            <div class="quiz-question"><p>Q24. What is the term for a Python file containing function definitions and statements?</p><label><input type="radio" name="q24" value="A" required> A) Class</label><label><input type="radio" name="q24" value="B"> B) Module</label><label><input type="radio" name="q24" value="C"> C) Script</label><label><input type="radio" name="q24" value="D"> D) Package</label></div>
+            <div class="quiz-question"><p>Q25. Which Python structure is best suited for storing key-value pairs?</p><label><input type="radio" name="q25" value="A" required> A) List</label><label><input type="radio" name="q25" value="B"> B) Tuple</label><label><input type="radio" name="q25" value="C"> C) Set</label><label><input type="radio" name="q25" value="D"> D) Dictionary</label></div>
+
+            <button type="submit" class="btn-quiz" style="background-color: #dc3545; width: 100%;">
+                SUBMIT AND GET RESULTS
+            </button>
+        </form>
+
+        <button id="download-csv" class="btn-quiz" style="background-color:#007bff; width: 100%;">Download Results as CSV</button>
+    </div>
+
+    <div id="result-message" role="status" aria-live="polite"></div>
+
+</div>
+
+<script>
+    document.getElementById('start-quiz-btn').addEventListener('click', function() {
+        const btn = this;
+        document.getElementById('quiz-section').style.display = 'block';
+        btn.style.display = 'none';
+        btn.setAttribute('aria-expanded', 'true');
+        // Focus first input for accessibility
+        const firstInput = document.querySelector('#quiz-section input');
+        if (firstInput) firstInput.focus();
+    });
+
+    // Define the correct answers
+    const CORRECT_ANSWERS = {
+        'q1': 'C', 'q2': 'C', 'q3': 'C', 'q4': 'C', 'q5': 'C',
+        'q6': 'C', 'q7': 'C', 'q8': 'C', 'q9': 'A', 'q10': 'B',
+        'q11': 'D', 'q12': 'D', 'q13': 'C', 'q14': 'C', 'q15': 'C',
+        'q16': 'D', 'q17': 'B', 'q18': 'C', 'q19': 'C', 'q20': 'C',
+        'q21': 'B', 'q22': 'D', 'q23': 'D', 'q24': 'B', 'q25': 'D'
+    };
+
+    // Utility: safely create text nodes for display (avoid innerHTML with user input)
+    function setResultMessage({score, totalQuestions, percentage, email, name}) {
+        const container = document.getElementById('result-message');
+        container.innerHTML = ''; // clear
+        const title = document.createElement('div');
+        title.style.fontSize = '1.2em';
+        title.style.marginBottom = '8px';
+        title.textContent = '🎉 Quiz Complete! 🎉';
+        container.appendChild(title);
+
+        const scoreP = document.createElement('p');
+        scoreP.style.margin = '8px 0';
+        scoreP.style.fontWeight = '600';
+        scoreP.textContent = `Your Score: ${score} / ${totalQuestions} (${percentage})`;
+        container.appendChild(scoreP);
+
+        const contactP = document.createElement('p');
+        contactP.style.margin = '8px 0';
+        contactP.style.fontWeight = '500';
+        contactP.textContent = `A specialist will contact you at ${email} to discuss your results and suggest the best InternZ Learn courses for your career path.`;
+        container.appendChild(contactP);
+
+        // Friendly CTA
+        const followP = document.createElement('p');
+        followP.style.marginTop = '12px';
+        followP.style.fontWeight = '400';
+        followP.textContent = `Thank you, ${name || 'student'} — you can download your results as a CSV below.`;
+        container.appendChild(followP);
+
+        container.style.display = 'block';
+        container.focus?.();
+    }
+
+    // Convert object to CSV string (header + single row)
+    function objectToCSV(obj) {
+        const keys = Object.keys(obj);
+        // CSV escape helper
+        const escapeCell = (cell) => {
+            if (cell === undefined || cell === null) return '';
+            const s = String(cell);
+            if (s.includes('"') || s.includes(',') || s.includes('\n')) {
+                return '"' + s.replace(/"/g, '""') + '"';
+            }
+            return s;
+        };
+        const header = keys.map(k => escapeCell(k)).join(',');
+        const row = keys.map(k => escapeCell(obj[k])).join(',');
+        return header + '\n' + row;
+    }
+
+    // Trigger CSV download
+    function downloadCSV(filename, csvContent) {
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => {
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }, 100);
+    }
+
+    document.getElementById('quiz-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {};
+        let score = 0;
+        const totalQuestions = 25;
+
+        // Collect Data and Calculate Score
+        for (let [key, value] of formData.entries()) {
+            data[key] = value;
+            if (key.startsWith('q') && CORRECT_ANSWERS[key] === value) {
+                score++;
+            }
+        }
+
+        data.score = score;
+        data.percentage = (score / totalQuestions * 100).toFixed(0) + '%';
+
+        // Hide form (but keep quiz visible so user can download if needed)
+        form.style.display = 'none';
+
+        // Display result using safe DOM text nodes
+        setResultMessage({
+            score,
+            totalQuestions,
+            percentage: data.percentage,
+            email: data.email || 'N/A',
+            name: data.name || ''
+        });
+
+        // Make CSV download button visible and prepare CSV content
+        const csvButton = document.getElementById('download-csv');
+        // Make a flat result object for CSV: keep personal fields + per-question answers + score/percentage
+        const flat = {
+            name: data.name || '',
+            email: data.email || '',
+            phone: data.phone || '',
+            education: data.education || '',
+            department: data.department || ''
+        };
+        // Add each quiz answer (q1..q25)
+        for (let i = 1; i <= totalQuestions; i++) {
+            const key = 'q' + i;
+            flat[key] = data[key] || '';
+        }
+        flat.score = data.score;
+        flat.percentage = data.percentage;
+
+        const csvContent = objectToCSV(flat);
+
+        csvButton.style.display = 'block';
+        csvButton.onclick = function() {
+            const filename = `internz-quiz-result-${(data.email || 'unknown').replace(/[^a-z0-9@.-]/ig,'_')}.csv`;
+            downloadCSV(filename, csvContent);
+        };
+
+        // Optionally: send to backend — commented out so nothing posts by default.
+        /*
+        fetch('YOUR_BACKEND_SERVER_ENDPOINT_HERE', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(flat)
+        })
+        .then(r => r.json())
+        .then(res => console.log('Saved result to backend', res))
+        .catch(err => console.error('Backend save error', err));
+        */
+    });
+</script>
+
+</body>
+</html>
